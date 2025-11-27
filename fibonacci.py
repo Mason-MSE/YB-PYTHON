@@ -1,22 +1,45 @@
 import math
 
 # Function to calculate the n-th Fibonacci number using the closed-form formula (Binet's formula)
+# use math package
 def fibonacci_math(n):
-    a = (1 + math.sqrt(5)) / 2  # Golden ratio
-    b = (1 - math.sqrt(5)) / 2  # Conjugate of the golden ratio
-    # Apply Binet's formula and round to nearest integer
-    return round((math.pow(a, n) - math.pow(b, n)) / math.sqrt(5))
+    # Golden ratio (φ), approximately 1.618...
+    a = (1 + math.sqrt(5)) / 2  
 
+    # Conjugate of the golden ratio (1 - φ), approximately -0.618...
+    b = (1 - math.sqrt(5)) / 2  
+
+    # Apply Binet's formula to compute the n-th Fibonacci number:
+    # F(n) = (φ^n - (1 - φ)^n) / √5
+    # Because of floating-point precision issues, we use round() 
+    # to get the nearest integer as the final Fibonacci number.
+    return round((math.pow(a, n) - math.pow(b, n)) / math.sqrt(5))
 
 
 
 # Recursive implementation of Fibonacci sequence
 # Returns the n-th Fibonacci number
+# Time complexity: O(2^n), because many subproblems are recomputed repeatedly.
+# Space complexity: O(n), due to the maximum depth of the recursion stack.
+# Therefore, this implementation is mainly for educational/demonstration purposes
+# and is NOT recommended for large n in real-world applications.
+# Risk of stack overflow:
+# For sufficiently large n, the recursion depth may exceed the maximum
+# call stack size of the Python interpreter (or the OS limit), which can
+# cause a RuntimeError (recursion depth exceeded) or stack overflow.
 def fibonacci_recursion(n):
+    # Base case 1: if n is 0, the 0th Fibonacci number is defined as 0
     if n == 0:
         return 0
+
+    # Base case 2: if n is 1, the 1st Fibonacci number is defined as 1
     elif n == 1:
         return 1
+
+    # Recursive case: for n >= 2, use the recurrence relation
+    # F(n) = F(n-1) + F(n-2)
+    # This calls the function itself to compute the two previous Fibonacci numbers,
+    # then returns their sum as the current Fibonacci number.
     else:
         return fibonacci_recursion(n-1) + fibonacci_recursion(n-2)
 
@@ -25,18 +48,50 @@ arrays = []
 # Dynamic programming approach to calculate Fibonacci numbers up to n
 # Stores all Fibonacci numbers in the 'arrays' list and returns the n-th Fibonacci number
 def fibonacci_dynamic_plan(n):
-    arrays.append(0)  # Append the first Fibonacci number (0) to the list
-    a, b = 0, 1       # Initialize first two Fibonacci numbers
+    # Append the first Fibonacci number (0) to the list
+    arrays.append(0)   
     if n == 0:
-        return 0      # Return 0 if n is 0
-    arrays.append(1)  # Append the second Fibonacci number (1) to the list
+        # Return 0 if n is 0
+        return 0     
+    # Append the second Fibonacci number (1) to the list
+    arrays.append(1)  
     if n == 1:
-        return 1      # Return 1 if n is 1
-    for i in range(2, n+1):
-        # Update Fibonacci numbers using iteration
-        a, b = b, a + b
-        arrays.append(b)  # Store each Fibonacci number in the list
-    return b  # Return the n-th Fibonacci number
+        # Return 1 if n is 1
+        return 1      
+    # Initialize first two Fibonacci numbers and a temporary variable
+    a, b, temp = 0, 1, 0    
+
+    for i in range(2, n + 1):
+        # algorithm 1: Update Fibonacci numbers using tuple assignment (Python-style multiple assignment).
+        # This style exists in languages like Python, JavaScript, and Go,
+        # but is NOT supported directly in C, C++, or Java, so it is not universally applicable across languages.
+        
+        # a, b = b, a + b
+
+        # algorithm 2: Update Fibonacci numbers using a temporary variable (classic swap).
+        # This approach has good readability and works in almost all programming languages,
+        # including C, C++, Java, Python, etc., so it is a classic and widely applicable algorithm.
+       
+        # temp now holds the old value of a
+        temp = a  
+        # a is updated to the previous value of b       
+        a = b   
+        # b becomes the sum of the previous a and b (the next Fibonacci number)         
+        b = b + temp      
+
+
+        # algorithm 3: Update Fibonacci numbers using arithmetic swap (without a temporary variable).
+        # First update b to the next Fibonacci number, then recover the previous b as the new a.
+        # This works, but the readability is relatively poor compared to the other methods.
+        # # b is updated to the next Fibonacci number
+        # b = a + b 
+        # # a becomes the previous value of b       
+        # a = b - a       
+
+        # Store each newly computed Fibonacci number in the list
+        arrays.append(b)
+    # Return the n-th Fibonacci number
+    return b  
 
 
 # Main function for user interaction
@@ -47,28 +102,21 @@ def main():
             if input_variable < 0:
                 print(f"This is a negative number")
                 break
-            arrays.clear()  # Clear the list before generating new Fibonacci numbers
+            # Clear the list before generating new Fibonacci numbers
+            arrays.clear()  
             # Print the n-th Fibonacci number using dynamic programming
             print(f'The final number is {fibonacci_dynamic_plan(input_variable)}')
             # Print the n-th Fibonacci number using the mathematical formula
             print(f'The final number from fibonacci_math is {fibonacci_math(input_variable)}') 
             # Print all Fibonacci numbers generated by the dynamic approach
-            print(*arrays, sep=', ')
+            print('Fibonacci series is ',end="")
+            print('{', end='')
+            print( *arrays, sep=', ',end='')
+            print('}')
         except ValueError:
             print("WARNING: This is not an integer! Please input again", end="")
 
 
 if __name__ == "__main__":
-    # Demonstration of power calculations: 3^i using math.pow() and 3**i
-    for i in range(1, 9, 2):
-        print(f'{i}:', f'math.pow: {math.pow(3, i)}', f'multiply: {3**i}')
-    
-    # Demonstration of repeated multiplication (4^4)
-    sum = 1
-    multiply = 4
-    for j in range(0, 4, 1):
-        sum *= multiply
-    print(f'Result is: {sum}')
-    
     # Call main function to start Fibonacci program
     main()
