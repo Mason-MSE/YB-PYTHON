@@ -101,3 +101,6 @@ All queries are implemented via the generic Repository and SQL combination.
 ✔ Automatic audit field handling
 ✔ Pagination and fuzzy search support
 ✔ SQL debug logging for observability
+
+🖼 ER Diagram
+https://github.com/Mason-MSE/YB-PYTHON/blob/main/Week4/Activity5/images/image.png
