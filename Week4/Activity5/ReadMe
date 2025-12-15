@@ -10,7 +10,7 @@ Supports multiple databases: SQLite & MySQL
 
 Uses OOP design for data access abstraction
 
-Implements a MyBatis-inspired layered architecture
+Implements a clean layered architecture for database operations
 
 Provides entity models, generic repositories, transaction, and logging support
 
