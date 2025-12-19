@@ -100,3 +100,8 @@ All queries are implemented via the generic Repository and SQL combination.
 
 🖼 ER Diagram
 ![Clinic ER Diagram](https://github.com/Mason-MSE/YB-PYTHON/raw/main/Week4/Activity5/images/image.png)
+
+
+### Vedio
+![Clinic ER Diagram](
+https://drive.google.com/file/d/1h6H4_wCPRobCQxig0jgBuJYZ055UOmSJ/view?usp=drive_link)
