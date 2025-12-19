@@ -103,5 +103,5 @@ All queries are implemented via the generic Repository and SQL combination.
 
 
 ### Vedio
-![Clinic ER Diagram](
+![2 minutes movie](
 https://drive.google.com/file/d/1h6H4_wCPRobCQxig0jgBuJYZ055UOmSJ/view?usp=drive_link)
