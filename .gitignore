@@ -11,3 +11,5 @@ data/*.sql
 data/*.db
 
 .ipynb_checkpoints/
+__pycache__/*.pyc
+__pycache__/*/

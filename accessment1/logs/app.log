@@ -1,0 +1,47 @@
+2026-01-21 20:03:13 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:03:13 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:03:13 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:06:46 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:06:46 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:07:33 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:07:33 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:08:21 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:08:21 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:08:21 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:13:23 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:13:23 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:13:23 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:23:23 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:23:23 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:23:23 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:23:23 | INFO    | CarRentalApp | Fee calculated for booking 1: $413.95
+2026-01-21 20:23:23 | INFO    | CarRentalApp | Payment recorded: $413.95 for booking 1
+2026-01-21 20:23:23 | INFO    | CarRentalApp | Booking 1 approved
+2026-01-21 20:26:26 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:26:26 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:26:26 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:26:26 | INFO    | CarRentalApp | Fee calculated for booking 1: $413.95
+2026-01-21 20:26:26 | INFO    | CarRentalApp | Booking 1 approved
+2026-01-21 20:26:26 | INFO    | CarRentalApp | Payment recorded: $413.95 for booking 1
+2026-01-21 20:26:45 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-21 20:26:45 | INFO    | CarRentalApp | Car added: Toyota Corolla (ID: 1)
+2026-01-21 20:26:45 | INFO    | CarRentalApp | Booking created: ID 1 for user 1
+2026-01-21 20:26:45 | INFO    | CarRentalApp | Fee calculated for booking 1: $873.95
+2026-01-21 20:26:45 | INFO    | CarRentalApp | Booking 1 approved
+2026-01-21 20:26:45 | INFO    | CarRentalApp | Payment recorded: $873.95 for booking 1
+2026-01-22 11:51:43 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 11:53:56 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 11:55:05 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 11:55:27 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:00:10 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:00:10 | WARNING | CarRentalApp | Failed login attempt for mason@example.com
+2026-01-22 12:00:48 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:00:48 | WARNING | CarRentalApp | Failed login attempt for mason@example.com
+2026-01-22 12:01:32 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:01:32 | INFO    | CarRentalApp | User logged in: mason@example.com (ID: 1)
+2026-01-22 12:03:23 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:03:23 | INFO    | CarRentalApp | User logged in: mason@example.com (ID: 1)
+2026-01-22 12:03:42 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:03:42 | INFO    | CarRentalApp | User logged in: mason@example.com (ID: 1)
+2026-01-22 12:04:20 | INFO    | CarRentalApp | User registered: mason@example.com (ID: 1)
+2026-01-22 12:04:20 | INFO    | CarRentalApp | User logged in: mason@example.com (ID: 1)
