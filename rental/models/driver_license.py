@@ -1,0 +1,18 @@
+from sqlalchemy import Column, String, Integer, Float, Boolean, DateTime, Numeric, event,Date,Time
+from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
+
+Base = declarative_base()
+
+class DriverLicenseModel(Base):
+    __tablename__ = 'driver_license'
+
+    driver_license_id = Column(Integer(), primary_key=True)
+    user_id = Column(Integer(), nullable=True)
+    license_pic = Column(String(), nullable=True)
+    driver_license = Column(String(), nullable=True)
+    expire_date = Column(Date(), nullable=True)
+    create_time = Column(DateTime(), nullable=True)
+    modify_time = Column(DateTime(), nullable=True)
+    is_deleted = Column(Integer(), nullable=True)
+    drive_number = Column(String(), nullable=True)
