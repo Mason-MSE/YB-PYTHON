@@ -18,7 +18,7 @@ class PaymentSchema(BaseModel):
     is_deleted: Optional[int] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         json_encoders = {
             datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S') if v else None,
             date: lambda v: v.strftime('%Y-%m-%d') if v else None,
@@ -26,7 +26,6 @@ class PaymentSchema(BaseModel):
         }
 
 class PaymentCreateSchema(BaseModel):
-    payment_id: int
     booking_id: Optional[int] = None
     rent_fee_id: Optional[int] = None
     payment_amount: Optional[float] = None
@@ -36,15 +35,12 @@ class PaymentCreateSchema(BaseModel):
     reference_number: Optional[str] = Field(None, max_length=50)
     payer_name: Optional[str] = Field(None, max_length=100)
     notes: Optional[str] = None
-    create_time: Optional[datetime] = None
-    modify_time: Optional[datetime] = None
-    is_deleted: Optional[int] = None
-
+    
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class PaymentUpdateSchema(BaseModel):
     is_deleted: Optional[int] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True

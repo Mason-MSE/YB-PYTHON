@@ -10,6 +10,10 @@ def get_all(session: Session):
 def get(session: Session, payment_id):
     return session.query(PaymentModel).filter_by(payment_id=payment_id).first()
 
+def get_by_booking_id(session: Session, booking_id):
+    return session.query(PaymentModel).filter_by(booking_id=booking_id).first()
+
+
 def create(session: Session, obj_in: PaymentCreateSchema):
     obj = PaymentModel(**obj_in.dict())
     session.add(obj)

@@ -6,6 +6,9 @@ import importlib.util
 import sys
 from typing import List, Optional
 
+from core.dependencies import get_current_user
+from apis.auth import auth_router
+
 
 app = FastAPI()
 
@@ -55,9 +58,10 @@ def include_routers_from_folder(folder: str = "api"):
         if hasattr(module, "router"):
             router = getattr(module, "router")
             # Optional: add prefix=/api or prefix=f"/{file_path.stem}" etc.
-            app.include_router(router)   # or app.include_router(router, prefix=f"/{file_path.stem}")
+            app.include_router(router,dependencies=[Depends(get_current_user)])   # or app.include_router(router, prefix=f"/{file_path.stem}")
             print(f"Included router from: {file_path.name}")
 
+app.include_router(auth_router)
 # ────────────────────────────────────────────────
 # Auto-register all routers
 include_routers_from_folder("apis")

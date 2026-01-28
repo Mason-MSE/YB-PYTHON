@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from models.booking import BookingModel
 from schemas.booking import BookingSchema,BookingCreateSchema,BookingUpdateSchema
 
+
 # CRUD Functions
 
 def get_all(session: Session):

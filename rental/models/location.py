@@ -15,4 +15,11 @@ class LocationModel(Base):
     zipcode = Column(String(), nullable=True)
     create_time = Column(DateTime(), nullable=True)
     modify_time = Column(DateTime(), nullable=True)
-    is_deleted = Column(Integer(), nullable=True)
+    is_deleted = Column(Integer(), nullable=True,default=0)
+@event.listens_for(LocationModel, "before_update", propagate=True)
+def receive_before_update(mapper, connection, target):  
+    target.modify_time = datetime.now()
+@event.listens_for(LocationModel, "before_insert", propagate=True)
+def receive_before_insert(mapper, connection, target):  
+    target.create_time = datetime.now() 
+    target.modify_time = datetime.now()

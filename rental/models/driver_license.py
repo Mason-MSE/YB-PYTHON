@@ -14,5 +14,12 @@ class DriverLicenseModel(Base):
     expire_date = Column(Date(), nullable=True)
     create_time = Column(DateTime(), nullable=True)
     modify_time = Column(DateTime(), nullable=True)
-    is_deleted = Column(Integer(), nullable=True)
+    is_deleted = Column(Integer(), nullable=True,default=0)
     drive_number = Column(String(), nullable=True)
+@event.listens_for(DriverLicenseModel, "before_update", propagate=True)
+def receive_before_update(mapper, connection, target):
+    target.modify_time = datetime.now()
+@event.listens_for(DriverLicenseModel, "before_insert", propagate=True) 
+def receive_before_insert(mapper, connection, target):
+    target.create_time = datetime.now()
+    target.modify_time = datetime.now()

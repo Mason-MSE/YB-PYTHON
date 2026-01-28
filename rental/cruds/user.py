@@ -12,6 +12,7 @@ def get(session: Session, id):
 
 def create(session: Session, obj_in: UserCreateSchema):
     obj = UserModel(**obj_in.dict())
+    obj.set_password(obj.password)  # Hash the password before storing
     session.add(obj)
     session.commit()
     session.refresh(obj)

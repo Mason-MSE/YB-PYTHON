@@ -143,7 +143,7 @@ for table in tables:
             line = f"    {col_name}: Optional[{field_type}] = None"
         schema_lines.append(line+"\n")
     schema_lines.append("\n    class Config:\n")
-    schema_lines.append("        orm_mode = True\n")
+    schema_lines.append("        from_attributes = True\n")
     schema_lines.append("        json_encoders = {\n")
     schema_lines.append("            datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S') if v else None,\n")
     schema_lines.append("            date: lambda v: v.strftime('%Y-%m-%d') if v else None,\n")
@@ -167,7 +167,7 @@ for table in tables:
                 line = f"    {col_name}: Optional[{field_type}] = None"
             schema_lines.append(line+"\n")
     schema_lines.append("\n    class Config:\n")
-    schema_lines.append("        orm_mode = True\n\n")
+    schema_lines.append("        from_attributes = True\n\n")
     # PUT schema
     schema_lines.append(f"class {update_schema_class}(BaseModel):\n")
     for col in columns:
@@ -182,7 +182,7 @@ for table in tables:
             line = f"    {col_name}: Optional[{field_type}] = None"
     schema_lines.append(line+"\n")
     schema_lines.append("\n    class Config:\n")
-    schema_lines.append("        orm_mode = True\n")
+    schema_lines.append("        from_attributes = True\n")
     with open(schema_file, "w") as f:
         f.write("".join(schema_lines))
     # ==================================

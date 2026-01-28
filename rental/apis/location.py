@@ -22,6 +22,10 @@ def read_item(id, db: Session = Depends(get_db)):
 def create_item(item_in: LocationCreateSchema, db: Session = Depends(get_db)):
     return create(db, item_in)
 
+@router.post('/batch_create', response_model=List[LocationSchema])
+def create_items(items: List[LocationCreateSchema], db: Session = Depends(get_db)):
+    return [create(db, item_in) for item_in in items]
+
 @router.put('/{id}', response_model=LocationSchema)
 def update_item(id, item_in: LocationUpdateSchema, db: Session = Depends(get_db)):
     db_obj = get(db, id)

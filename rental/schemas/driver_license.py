@@ -14,7 +14,7 @@ class DriverLicenseSchema(BaseModel):
     drive_number: Optional[str] = Field(None, max_length=50)
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         json_encoders = {
             datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S') if v else None,
             date: lambda v: v.strftime('%Y-%m-%d') if v else None,
@@ -33,10 +33,10 @@ class DriverLicenseCreateSchema(BaseModel):
     drive_number: Optional[str] = Field(None, max_length=50)
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class DriverLicenseUpdateSchema(BaseModel):
     drive_number: Optional[str] = Field(None, max_length=50)
 
     class Config:
-        orm_mode = True
+        from_attributes = True

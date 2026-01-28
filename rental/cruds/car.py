@@ -5,7 +5,7 @@ from schemas.car import CarSchema,CarCreateSchema,CarUpdateSchema
 # CRUD Functions
 
 def get_all(session: Session):
-    return session.query(CarModel).all()
+    return session.query(CarModel).filter_by(is_deleted=0).filter_by(is_available=1).all()
 
 def get(session: Session, car_id):
     return session.query(CarModel).filter_by(car_id=car_id).first()
