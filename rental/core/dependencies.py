@@ -44,18 +44,15 @@ def require_permission():
                 db: Session = Depends(get_db)):
         path = request.url.path
         method = request.method.upper()
-        print(f"Checking permission for path: {path}, method: {method}, user: {current_user}")
         print(current_user.status)
      
         # Get user roles
         role_ids = db.query(UserRoleModel.role_id).filter(
             UserRoleModel.user_id == current_user.id
         ).all()
-        print(f"User roles: {role_ids}")
         role_ids = [r[0] for r in role_ids]
 
         if  not role_ids:
-            print("Roles found for user")
             raise HTTPException(status_code=403, detail="No roles assigned")
 
         # Get role resources
@@ -69,7 +66,7 @@ def require_permission():
         # Check if current path + method matches any resource
         for res_path, res_method in resources:
             path_regex, _, param_convertors =compile_path(res_path)
-            if path_regex.fullmatch(path) and res_method.upper() == method:
+            if res_path == path and res_method.upper() == method:
                 return current_user
 
         # Deny if no match

@@ -30,7 +30,6 @@ class UserProfileSchema(BaseModel):
         }
 
 class UserProfileCreateSchema(BaseModel):
-    profile_id: int
     user_id: Optional[int] = None
     street: Optional[str] = Field(None, max_length=100)
     city: Optional[str] = Field(None, max_length=50)
@@ -44,9 +43,6 @@ class UserProfileCreateSchema(BaseModel):
     emergency_contact_name: Optional[str] = Field(None, max_length=100)
     emergency_contact_phone: Optional[str] = Field(None, max_length=20)
     preferred_language: Optional[str] = Field(None, max_length=20)
-    create_time: Optional[datetime] = None
-    modify_time: Optional[datetime] = None
-    is_deleted: Optional[int] = None
 
     class Config:
         from_attributes = True

@@ -12,7 +12,8 @@ def get(session: Session, booking_id):
     return session.query(BookingModel).filter_by(booking_id=booking_id).first()
 
 def create(session: Session, obj_in: BookingCreateSchema):
-    obj = BookingModel(**obj_in.dict())
+    data=obj_in.dict(exclude={"insurance_price_id"})
+    obj = BookingModel(**data)
     session.add(obj)
     session.commit()
     session.refresh(obj)

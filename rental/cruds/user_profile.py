@@ -7,6 +7,9 @@ from schemas.user_profile import UserProfileSchema,UserProfileCreateSchema,UserP
 def get_all(session: Session):
     return session.query(UserProfileModel).all()
 
+def get_by_user_id(session: Session, user_id):
+    return session.query(UserProfileModel).filter_by(user_id=user_id).filter_by(is_deleted=0).first()
+
 def get(session: Session, profile_id):
     return session.query(UserProfileModel).filter_by(profile_id=profile_id).first()
 

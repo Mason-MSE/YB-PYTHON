@@ -7,6 +7,9 @@ from schemas.driver_license import DriverLicenseSchema,DriverLicenseCreateSchema
 def get_all(session: Session):
     return session.query(DriverLicenseModel).all()
 
+def get_by_user_id(session: Session, user_id):
+    return session.query(DriverLicenseModel).filter_by(user_id=user_id).filter_by(is_deleted=0).first()
+
 def get(session: Session, driver_license_id):
     return session.query(DriverLicenseModel).filter_by(driver_license_id=driver_license_id).first()
 

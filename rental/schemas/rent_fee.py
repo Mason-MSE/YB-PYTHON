@@ -30,7 +30,7 @@ class RentFeeCreateSchema(BaseModel):
     late_fee: Optional[float] = None
     discount_amount: Optional[float] = None
     tax_amount: Optional[float] = None
-    taotal_amount: Optional[float] = None
+    total_amount: Optional[float] = None
 
     class Config:
         from_attributes = True

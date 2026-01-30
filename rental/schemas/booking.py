@@ -6,6 +6,7 @@ class BookingSchema(BaseModel):
     booking_id: Optional[int] = None
     user_id: Optional[int] = None
     car_id: Optional[int] = None
+    insurance_price_id: Optional[int]=None
     start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
     pickup_location: Optional[int] = None
@@ -20,6 +21,7 @@ class BookingSchema(BaseModel):
 
     class Config:
         from_attributes = True
+        extra = "ignore"
         json_encoders = {
             datetime: lambda v: v.strftime('%Y-%m-%d %H:%M:%S') if v else None,
             date: lambda v: v.strftime('%Y-%m-%d') if v else None,
@@ -29,6 +31,7 @@ class BookingSchema(BaseModel):
 class BookingCreateSchema(BaseModel):
     user_id: Optional[int] = None
     car_id: Optional[int] = None
+    insurance_price_id: Optional[int]=None
     start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
     pickup_location: Optional[int] = None
@@ -37,10 +40,12 @@ class BookingCreateSchema(BaseModel):
 
     class Config:
         from_attributes = True
+        extra = "ignore"
 
 class BookingUpdateSchema(BaseModel):
     user_id: Optional[int] = None
     car_id: Optional[int] = None
+    insurance_price_id: Optional[int]=None
     start_date: Optional[datetime] = None
     end_date: Optional[datetime] = None
     pickup_location: Optional[int] = None

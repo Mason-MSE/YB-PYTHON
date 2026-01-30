@@ -4,6 +4,8 @@ from typing import List
 from database import get_db
 from schemas.user_profile import UserProfileSchema,UserProfileCreateSchema,UserProfileUpdateSchema
 from cruds.user_profile import get, get_all, create, update, delete
+from core.dependencies import get_current_user
+from models.user import UserModel
 
 router = APIRouter(prefix='/user_profile', tags=['user_profile'])
 
@@ -19,7 +21,8 @@ def read_item(profile_id, db: Session = Depends(get_db)):
     return db_obj
 
 @router.post('/', response_model=UserProfileSchema)
-def create_item(item_in: UserProfileCreateSchema, db: Session = Depends(get_db)):
+def create_item(item_in: UserProfileCreateSchema, db: Session = Depends(get_db), current_user: UserModel = Depends(get_current_user)):
+    item_in.user_id=current_user.id
     return create(db, item_in)
 
 @router.put('/{profile_id}', response_model=UserProfileSchema)
