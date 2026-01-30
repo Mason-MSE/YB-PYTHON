@@ -98,3 +98,69 @@ See ERD in `docs/database_design.pdf`.
 
 ### Steps
 1. Clone the repository:
+git clone https://github.com/yourusername/car-rental-api.git
+cd car-rental-api
+text2. Create and activate virtual environment:
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+text3. Install dependencies:
+pip install -r requirements.txt
+text(Includes fastapi, sqlalchemy, pydantic, alembic, pyjwt, passlib[bcrypt], etc.)
+
+4. Set environment variables (in .env file):
+DATABASE_URL=postgresql://user:password@localhost/dbname
+SECRET_KEY=your_jwt_secret
+text5. Run migrations:
+alembic upgrade head
+text## Running the App
+
+Run the FastAPI server with uvicorn:
+uvicorn src.main:app --reload
+textThe API will be available at `http://127.0.0.1:8000`.
+
+### API Documentation
+Access Swagger UI for interactive API docs and testing:
+- URL: http://127.0.0.1:8000/docs
+- You can request API interfaces directly from Swagger, including authentication (OAuth2 with JWT).
+
+For Redoc: http://127.0.0.1:8000/redoc
+
+## Usage Examples
+
+### Register a User (POST /users/register)
+```json
+{
+  "full_name": "John Doe",
+  "email": "john@example.com",
+  "password": "securepassword",
+  "phone": "1234567890"
+}
+Login (POST /users/login)
+Returns JWT token.
+Get Available Cars (GET /cars/available)
+Requires authentication; filtered by location/date.
+Create Booking (POST /bookings)
+JSON{
+  "car_id": 1,
+  "start_date": "2026-02-01T00:00:00",
+  "end_date": "2026-02-05T00:00:00",
+  "pickup_location": "Airport",
+  "drop_location": "City Center"
+}
+Fee calculated automatically; status set to pending. Observer notifies admin.
+Approve Booking (PATCH /bookings/{id}/approve)
+Admin-only; triggers Observer to notify customer.
+Testing
+Run tests with pytest:
+textpytest
+Includes unit tests for services, integration tests for API endpoints, and RBAC checks.
+Contributing
+
+Fork the repo.
+Create a branch: git checkout -b feature/xyz.
+Commit changes: git commit -m 'Add feature'.
+Push: git push origin feature/xyz.
+Open a Pull Request.
+
+License
+MIT License. See LICENSE for details.
